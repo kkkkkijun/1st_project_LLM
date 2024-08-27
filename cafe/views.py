@@ -18,7 +18,7 @@ def menu_detail(request, post_id):
 
     return render(request, "menu_detail.html", context)
 
-def post_like(request, post_id) : 
+def menu_like(request, post_id) : 
     menu = Menu.objects.get(id = post_id)
     user = request.user # 좋아요 한 사람
 

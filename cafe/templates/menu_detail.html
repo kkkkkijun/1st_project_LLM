@@ -32,9 +32,10 @@
             </button>
         </form>
     <span>Comments({{ menu.comment_set.count }})</span>
-    {% for comment in menu.comments_set.all %}
-        <span>{{ comment.user.username }}</span>
-        <span>{{ commen.content }}</span>
+
+    {% for comment in menu.comment_set.all %}
+        <h4>{{ comment.user_id }}</h4>
+        <p> {{ comment.content }}</p>
     {% endfor %}
     </div>
 </html>

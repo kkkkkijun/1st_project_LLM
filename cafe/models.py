@@ -21,3 +21,4 @@ class Comment(models.Model):
                              verbose_name="메뉴",
                              on_delete=models.CASCADE)
     content = models.TextField("내용", blank=True)
+    created = models.DateTimeField("작성일시", auto_now_add=True)
