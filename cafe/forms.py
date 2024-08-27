@@ -1,5 +1,4 @@
 from cafe.models import Comment
-from users.models import Like
 from django import forms
 
 class CommentForm(forms.ModelForm): 
@@ -16,11 +15,3 @@ class CommentForm(forms.ModelForm):
                 }
             )
         }
-
-class LikeForm(forms.ModelForm): 
-    class Meta: 
-        model = Like
-        fields = [
-            "user_id", 
-            "menu_id"
-        ]
