@@ -21,14 +21,15 @@
     </body>
     <!-- 좋아요/ 댓글 시작 -->
     <div>
-        <form method="POST">
+        <form 
+        method="POST">
             {% csrf_token %}
             <button type="submit"
-                {% if user in menu.like_menu.add.all %} 
+                {% if user in menu.like.all %} 
                     style="color:rgb(255, 8, 222);" 
                 {% endif %}>
                 <!-- Post 의 related_name으로 지정한 like_users로 좋아요 누른 사용자 수를 가져옴-->
-                Likes({{ menu.like_users.count }})
+                Likes({{ menu.like_set.count }})
             </button>
         </form>
     <span>Comments({{ menu.comment_set.count }})</span>
