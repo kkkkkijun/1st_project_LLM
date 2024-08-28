@@ -95,7 +95,7 @@ def main(request):
             menus = Menu.objects.filter(brand=brand, category=category)
 
         if order_by != "기본":
-            menus = Menu.order_by(order_by)
+            menus = Menu.objects.order_by(order_by)
     else:
         menus = Menu.objects.all()
     
