@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.decorators.http import require_POST
 from django.http import HttpResponseForbidden
 
+from users.models import Like
 from cafe.models import Menu, Comment
 from cafe.forms import CommentForm
 
@@ -20,17 +21,26 @@ def menu_detail(request, post_id):
 
     return render(request, "menu_detail.html", context)
 
+@require_POST
 def menu_like(request, post_id) : 
     menu = Menu.objects.get(id = post_id)
     user = request.user # 좋아요 한 사람
 
-    user.like_menu.add(menu)
+    like = Like.objects.get_or_create(user_id=user, menu_id=menu)
+
+    if user.like(id=menu.id).exists() : # 누른 사람이 이미 있으면
+    #좋아요 목록에서 삭제 
+        like.delete()
+
+    else: 
+        user.like.add(menu)
+
 
     # 왼쪽이 True or 오른쪽이 False
-    url = reverse("cafe:detail") 
+    url = reverse("cafe:detail", args=[post_id]) 
     return redirect(url)
 
-# 파이스타그램 copy
+
 # 댓글 작성을 처리할 View, POST 요청만 허용 
 @require_POST
 def comment_add(request): 
@@ -53,15 +63,15 @@ def comment_add(request):
         print(comment.user_id)
 
         # URL 로 "next"값을 전달받았다면 댓글 작성 완료 후 전달받은 값으로 이동 
-        # if request.GET.get("next"): 
-        #     url_next = request.GET.get("next")
+        if request.GET.get("next"): 
+            url_next = request.GET.get("next")
 
-        # # "next" 값을 전달받지 않았다면 피드페이지의 글 위치로 이동 
-        # else: 
-        #     # 생성한 comment 에서 연결된 post 정보를 가져와서 id값을 이용 
-        #     url_next = reverse("posts:feeds") + f"#post-{comment.post.id}"
+        # "next" 값을 전달받지 않았다면 피드페이지의 글 위치로 이동 
+        else: 
+            # 생성한 comment 에서 연결된 post 정보를 가져와서 id값을 이용 
+            url_next = reverse("cafe:detail") + f"{comment.post.id}"
         
-        # return redirect(url_next)
+        return redirect(url_next)
     
 @require_POST
 def comment_delete(request, comment_id): 
