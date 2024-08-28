@@ -119,15 +119,59 @@
             {% for menu in menus %}
             <div class="coffee">
                 <h1>{{ menu.coffee_name }}</h1>
-                <h2>종류 : {{ menu.category }}</h2>
-                <h2>브랜드 : {{ menu.brand }}</h2>
+                <div class="category_brand">
+                    <h2 
+                    {% if menu.category in "커피" %}
+                        style="background-color: rgb(196, 179, 94);"
+                    {% elif menu.category in "음료"%}
+                        style="background-color: rgb(172, 236, 172);"
+                    {% elif menu.category in "티"%}
+                        style="background-color: rgb(255, 249, 169);"
+                    {% elif menu.category in "스무디"%}
+                        style="background-color: rgb(245, 160, 81);"
+                    {% endif %}>{{ menu.category }}</h2>
+                    <h2 
+                    {% if menu.brand in "스타벅스" %}
+                        style="background-color: rgb(49, 160, 99);"
+                    {% elif menu.brand in "메가커피"%}
+                        style="background-color: rgb(172, 236, 172);"
+                    {% elif menu.brand in "이디야"%}
+                        style="background-color: rgb(230, 221, 97);"
+                    {% elif menu.brand in "바나프레소"%}
+                        style="background-color: rgb(240, 252, 133);"
+                    {% endif %}>{{ menu.brand }}</h2>
+                </div>
                 <a href=""><img src="{{ menu.img }}"></a>
-                <p>카페인 : {{ menu.caffeine }}</p>
-                <p>칼로리 : {{ menu.calorie }}</p> 
-                <p>당류 : {{ menu.dang }}</p>
-                <p>단백질 : {{ menu.protein }}</p>
-                <p>포화지방 : {{ menu.fatty }}</p>
-                <p>나트륨 : {{ menu.na }}</p>  
+                <div class="kcal_table">
+                    <div class="kcal">
+                        <div>
+                            <p>카페인(mg)</p> 
+                            <p>{{ menu.caffeine }}</p>
+                        </div>
+                        <div>
+                            <p>칼로리(kcal)</p> 
+                            <p>{{ menu.calorie }}</p>
+                        </div>
+                        <div>
+                            <p>포화지방</p> 
+                            <p>{{ menu.fatty }}</p>
+                        </div>
+                    </div>
+                    <div class="kcal kcal2">
+                        <div>
+                            <p>단백질(g)</p> 
+                            <p>{{ menu.protein }}</p>
+                        </div>
+                        <div>
+                            <p>당류(g)</p> 
+                            <p>{{ menu.dang }}</p>
+                        </div>
+                        <div>
+                            <p>나트륨(mg)</p> 
+                            <p>{{ menu.na }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -135,7 +179,7 @@
 
     <footer>
         <div class="reference">
-            <img src="./images/Disney_Plus_logo.svg.png" alt="">
+            <!-- <img src="./images/Disney_Plus_logo.svg.png" alt=""> -->
             <ul>
                 <i class='bx bx-globe'></i>
                 <li>

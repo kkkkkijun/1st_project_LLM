@@ -153,6 +153,7 @@ nav > ul > li:hover {
 } */
 
 .grid {
+    padding: 30px;
     border: 3px solid silver;
     margin: 30px auto;
     display: grid;
@@ -163,8 +164,10 @@ nav > ul > li:hover {
 
 .coffee img{
     width: 100%;
+    height: 350px;
     transition: transform 0.3s ease;
     z-index: -99;
+    margin: auto;
 }
 
 div.coffee p {
@@ -176,13 +179,53 @@ div.coffee p {
     font-size: 20px;
 }
 
-.coffee h2 {
+.category_brand {
+    display: flex;
+    gap: 15px;
+}
+
+.category_brand h2 {
+    border: 3px solid rgb(80, 80, 80);
+    padding: 3px 10px;
     position: relative;
     z-index: 99;
+    border-radius: 20px;
+    margin: 10px 0 20px;
 }
 
 .coffee img:hover {
     transform: scale(1.1);
+}
+
+.kcal_table {
+    position: relative;
+    z-index: 99;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.kcal_table .kcal {
+    height: 100%;
+    width: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    /* background-color: red; */
+}
+
+.kcal2 {
+    border-left: 2px solid black;
+    
+}
+
+.kcal_table > .kcal > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    height: 33%;
+    align-items: center;
 }
 
 /* ============================footer=========================== */
