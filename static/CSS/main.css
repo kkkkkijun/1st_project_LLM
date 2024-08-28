@@ -1,0 +1,311 @@
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    height: 100px;
+    background-color: rgb(63, 63, 63);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 0 50px;
+}
+
+/* 시계 */
+.digital {
+    display: flex;
+    font-size: 30px;
+    font-weight: 900;
+    color: #cccccc;
+}
+
+.hours::after,
+.minutes::after {
+    content: ": ";
+    display: inline-block;
+    margin: 0 5px;
+}
+
+nav > ul {
+    display: flex;
+    list-style: none;
+    gap: 100px;
+    justify-content: center;
+    height: 25px;
+    align-items: center;
+    font-size: 25px;
+    margin: 0px 0px 0px 200px;
+}
+
+nav > ul > li {
+    letter-spacing: 2px;
+    color: rgb(224, 224, 224);
+    font-weight : bold;
+    border-bottom: 4px solid transparent;
+}
+
+nav > ul > li:hover {
+    border-bottom: 4px solid rgb(224, 224, 224);
+}
+
+.login-sign {
+    margin-left: 800px;
+    gap: 20px;
+    letter-spacing: 2px;
+    display: flex;
+    color: rgb(224, 224, 224);
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+}
+
+.login-sign p {
+    border-bottom: 2px solid transparent;
+}
+
+.login-sign p:hover {
+    border-bottom: 2px solid rgb(224, 224, 224);
+}
+
+.swiper {
+    margin-top: 100px;
+    width: 40%;
+    height: 400px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-image {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.1);
+}
+
+.swiper-slide p {
+    margin: -20px;
+}
+
+.swiper-slide span {
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+    width: 69px;
+    height: 69px;
+    line-height: 69px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    color: red;
+    font-weight: 900;
+    border: 4px solid red;
+    line-height: 65px;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color: gray;
+}
+
+/* ============================main=============================== */
+
+.category {
+    margin-left: 400px;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.category button {
+    padding: 2px 20px;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+/* .category  {
+    font-size: 160px;
+} */
+
+.grid {
+    border: 3px solid silver;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
+    gap: 50px 20px;
+}
+
+.coffee img{
+    width: 100%;
+    transition: transform 0.3s ease;
+    z-index: -99;
+}
+
+div.coffee p {
+    position: relative;
+    z-index: 99;
+}
+
+.coffee h1 {
+    font-size: 20px;
+}
+
+.coffee h2 {
+    position: relative;
+    z-index: 99;
+}
+
+.coffee img:hover {
+    transform: scale(1.1);
+}
+
+/* ============================footer=========================== */
+
+footer{
+    background-color: wheat;
+}
+
+.question{
+    width: 90%;
+    padding: 100px 0 0;
+    margin: auto;
+}
+
+.question > h1{
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: -2px;
+}
+
+.question > .question_container{
+    width: 100%;
+    height: 75px;
+    margin: 20px auto 0;
+    background-color: rgb(245, 240, 232);
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.question > .question_container.active{
+    height: auto;
+}
+
+.question > .question_container >.content > ul > li{
+    list-style-type: disc;
+    margin-left: 40px;
+    line-height: 40px;
+}
+
+.question > .question_container >.content > ul > p{
+    line-height: 40px;
+}
+
+.question > .question_container > .title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.question > .question_container > .title > h2{
+    font-size: 20px;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.question > .question_container > .title > span{
+    font-size: 50px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.question > .question_container > .content{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    padding: 5px 20px 20px 20px;
+}
+
+.question strong{
+    color: white;
+}
+
+.reference{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 100px auto 0;
+    align-items: center;
+    color: black;
+    font-weight: 500;
+    padding-top: 40px;
+}
+
+.reference > img{
+    width: 100px;
+}
+
+.reference > ul{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.reference > ul > li:hover{
+    color: white;
+}
+
+.bx-globe{
+    font-size: 16px;
+    transform: translateX(40px);
+}
+
+.reference select{
+    background-color: #040714;
+    color: white;
+    border: none;
+    padding-left: 25px;
+}
+
+.reference select > option{
+    background-color: white;
+    color: black;
+}
+
+address{
+    margin-top: 20px;
+    font-style: normal;
+    text-align: center;
+}
+
+.reference > p:last-of-type{
+    margin: 15px 0 100px 0;
+}
