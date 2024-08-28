@@ -19,9 +19,6 @@ def menu_detail(request, menu_id):
         "comment_form" : comment_form,
     }
 
-    if request.method == "POST": 
-        comment_content = request.POST["comment"]
-
     return render(request, "menu_detail.html", context)
 
 @require_POST
@@ -39,10 +36,24 @@ def menu_like(request, menu_id) :
                 user_id = user,
             )
 
-        return redirect("cafe:detail") 
+        return redirect("cafe:detail", menu_id=menu_id)
 
 
+@require_POST
+def comment_add(request, id):
+    # request.POST 로 전달된 데이터를 사용해 CommentForm 인스턴스를 생성
+    form = CommentForm(data=request.POST)
 
+    if form.is_valid():
+        # comment=False 옵션으로 메모리상에 Comment 객체 생성
+        comment = form.save(commit=False)
+
+        #Comment 생성에 필요한 사용자 정보를 request 에서 가져와 할당
+        comment.user_id = request.user # request.user : 현재 접속을 한 유저
+
+        # DB 에 comment 객체 저장
+        comment.save()
+        return redirect("cafe:detail", menu_id=id)
 
 @require_POST
 def comment_delete(request, comment_id): 

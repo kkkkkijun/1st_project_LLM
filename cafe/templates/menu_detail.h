@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>{{ menu.coffee_name }}</title>
     </head>
     <!-- 메뉴 상세 -->
     <body>
@@ -33,21 +31,15 @@
         {% for comment in menu.comment_set.all %}
             <h4>{{ comment.user_id }}</h4>
             <p> {{ comment.content }}</p>
+        {% empty %}
+            <li> 아직 댓글이 없습니다 </li>
         {% endfor %}
         </div>
         </div>
     <!-- 댓글 달기 -->
-        <small>{{ post.created }}</small>
         <div>
-        <!-- action 속성을 "댓글 추가" View 를 가리키는 URL 로 지정 -->
-        <form method="POST" action="{% url 'cafe:comment_add' id=menu.id %}">
-            {% csrf_token %}
-            <!-- 사용자가 직접 입력하지 않는 고정된 데이터를 form 내부에 위치 -->
-            <input type="hidden" name="menu_id" value="{{ menu.id }}">
-            <!-- 전달된 comment_form의 필드 중, "content" 필드만 렌더링 -->
-            {{ comment_form.content }}
-            <button type="submit">게시</button>
-        </form>
+
+
         </div>
     </body>
 </html>

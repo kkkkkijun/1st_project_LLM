@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="login">
+    <form method="POST">
+        <h1>드링크픽커스</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-login">로그인</button>
+        <a href="{% url 'users:signup' %}">회원가입 페이지로 이동</a> 
+    </form>
+</div>
+{% endblock %}

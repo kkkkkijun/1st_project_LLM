@@ -118,7 +118,7 @@
         <div class="grid">
             {% for menu in menus %}
             <div class="coffee">
-                <h1>{{ menu.coffee_name }}</h1>
+                <a href="{% url 'cafe:detail' menu_id=menu.id %}"><h1>{{ menu.coffee_name }}</h1></a>
                 <div class="category_brand">
                     <h2 
                     {% if menu.category in "커피" %}
@@ -141,7 +141,7 @@
                         style="background-color: rgb(240, 252, 133);"
                     {% endif %}>{{ menu.brand }}</h2>
                 </div>
-                <a href=""><img src="{{ menu.img }}"></a>
+                <a href="{% url 'cafe:detail' menu_id=menu.id %}"><img src="{{ menu.img }}"></a>
                 <div class="kcal_table">
                     <div class="kcal">
                         <div>

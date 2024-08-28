@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>건의사항</h1>
+    <div class="feddback">
+        {% for feedback in feedbacks %}
+            <h3>{{ feedback.title }}</h1>
+            <p>{{ feedback.contents }}</p>
+            {% if user == feedback.user_id %}
+            <form method="POST" action="{% url 'users:feedback_delete' feedback_id=feedback.id %}">
+                {% csrf_token %}
+                <button type="submit">삭제</button>
+            </form>
+            <form action="{% url 'users:feedback_edit' feedback_id=feedback.id %}">
+                <button type="submit">수정</button>
+            </form>
+            {% endif %}
+        {% endfor%}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">게시</button>
+        </form>
+    </div>
+</body>
+</html>
